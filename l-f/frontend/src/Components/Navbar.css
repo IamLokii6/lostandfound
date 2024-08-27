@@ -1,0 +1,21 @@
+/* Navbar.css */
+
+.custom-navbar {
+  background-color: rgb(119, 119, 207) !important; /* Change background color of navbar */
+  height: 70px;
+}
+
+.navbar-logo {
+  height: 40px; /* Adjust logo height as needed */
+  margin-right: 10px;
+}
+
+.custom-button {
+  color: rgb(49, 6, 6) !important; /* Change button text color */
+  background-color: rgb(250, 250, 250) !important; /* Change button background color */
+}
+
+/* Additional styles for rounding the buttons */
+.custom-button.rounded-pill {
+  border-radius: 50px !important; /* Adjust the border-radius to make the buttons round */
+}

@@ -1,0 +1,31 @@
+.search-container {
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .search-box {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for the search box */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .search-box input {
+    padding: 10px;
+    margin-right: 10px;
+    width: 700px; /* Adjust width as needed */
+  }
+  
+  .search-box button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
