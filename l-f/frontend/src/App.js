@@ -20,7 +20,7 @@ function App() {
           <Route path="/main"  element={<Main/>}/>
           <Route path="/lost-item"  element={<LostItemForm/>}/>
           <Route path="/register" element={<RegisterForm />} />
-          <Route path="/" element={<FrontPage />} /> {/* Load FrontPage along with Navbar */}
+          <Route path="/" element={<FrontPage />} />
           <Route path="/FrontPage" element={<FrontPage />} /> {/* Add a route for the FrontPage */}
           {/* Add more routes for other pages */}
         </Routes>

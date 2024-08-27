@@ -1,0 +1,55 @@
+.card1 {
+    width: 100%;
+    max-width: 300px; /* Set a maximum width for the card */
+    height: 200px; /* Set a default height for the card */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd; /* Optional: Border around the card */
+    border-radius: 5px; /* Optional: Rounded corners */
+    overflow: hidden; /* Hide overflow */
+    transition: height 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add some shadow for effect */
+    cursor: pointer; /* Show pointer cursor on hover */
+  }
+  
+  .card1.expanded {
+    height: auto; /* Allow height to expand */
+    transform: scale(1.02); /* Slightly scale up the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow when expanded */
+  }
+  
+  .card1:hover {
+    transform: scale(1.05); /* Slightly scale up the card on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+  }
+  
+  .card-img-top {
+    object-fit: cover; /* Cover the area of the image container */
+    height: 200px; /* Fixed height for the image */
+    width: 100%; /* Full width of the card */
+  }
+  
+  .no-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px; /* Match the height of the image */
+    width: 100%; /* Full width of the card */
+    background-color: #f0f0f0; /* Light grey background */
+    color: #888; /* Light grey text color */
+    font-size: 1.2rem; /* Adjust text size */
+    text-align: center; /* Center text horizontally */
+  }
+  
+  .card-body {
+    padding: 1rem; /* Add padding inside the card body */
+  }
+  
+  .card-text {
+    display: none; /* Hide text initially */
+  }
+  
+  .card1.expanded .card-text {
+    display: block; /* Show text when card is expanded */
+  }
+  

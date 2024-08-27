@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Navbar2 from './Navbar2';
 
 function LostItemForm() {
   const [formData, setFormData] = useState({
@@ -32,13 +33,16 @@ function LostItemForm() {
     setError('');
 
     const data = new FormData();
-    for (const key in formData) {
-      if (key === 'dateLost' && formData[key]) {
-        data.append(key, new Date(formData[key]).toISOString());
-      } else {
-        data.append(key, formData[key]);
-      }
-    }
+for (const key in formData) {
+  if (key === 'dateLost' && formData[key]) {
+    data.append(key, new Date(formData[key]).toISOString());
+  } else if (key === 'image') {
+    data.append(key, formData[key]); // Append the image file
+  } else {
+    data.append(key, formData[key]);
+  }
+}
+
 
     const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
 
@@ -56,7 +60,6 @@ function LostItemForm() {
         throw new Error(errorData.message || 'Something went wrong');
       }
 
-      const result = await response.json();
       toast.success('Item submitted successfully!'); // Show success message
       // Clear the form
       setFormData({
@@ -78,6 +81,8 @@ function LostItemForm() {
   };
 
   return (
+    <div>
+    <Navbar2/>
     <div className="container mt-5">
       <ToastContainer /> {/* Add ToastContainer to render toast notifications */}
       <div className="row justify-content-center">
@@ -211,6 +216,7 @@ function LostItemForm() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

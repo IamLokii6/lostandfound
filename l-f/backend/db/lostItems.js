@@ -9,7 +9,7 @@ const LostItemSchema = new mongoose.Schema({
   dateLost: { type: Date, required: true },
   location: { type: String, required: true },
   description: { type: String, required: true },
-  category: { type: String, required: true }, // Added category field
+  category: { type: String, required: true },
   image: { type: String }, // File path of the image
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Reference to the user who posted the item
 });

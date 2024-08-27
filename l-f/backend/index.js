@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 
+// Import models
 const User = require("./db/users");
 const LostItem = require("./db/lostItems");
 
@@ -106,6 +107,7 @@ app.post("/login", async (req, res) => {
 
 // API route to post a lost item
 app.post('/api/lost-items', upload.single('image'), async (req, res) => {
+  console.log('Uploaded file:', req.file);
   const { studentName, rollNumber, mobileNumber, itemName, dateLost, location, description, category } = req.body;
   console.log('Received data:', { studentName, rollNumber, mobileNumber, itemName, dateLost, location, description, category });
   try {
@@ -117,16 +119,40 @@ app.post('/api/lost-items', upload.single('image'), async (req, res) => {
       dateLost,
       location,
       description,
-      category, // Include category field
-      image: req.file ? req.file.path : '', // Save the file path
-      userId: req.userId // Ensure userId is included
+      category,
+      image: req.file ? req.file.path : '',
+      userId: req.userId
     });
 
     await lostItem.save();
     res.status(201).json({ message: "Lost item reported successfully" });
   } catch (error) {
-    console.error('Error reporting lost item:', error); // Log the error to the server console
+    console.error('Error reporting lost item:', error);
     res.status(500).json({ message: "Error reporting lost item", error: error.message });
+  }
+});
+
+// API route to get all lost items
+app.get('/api/lost-items', async (req, res) => {
+  try {
+    const lostItems = await LostItem.find({});
+    res.status(200).json(lostItems);
+  } catch (error) {
+    console.error('Error retrieving lost items:', error);
+    res.status(500).json({ message: "Error retrieving lost items", error: error.message });
+  }
+});
+
+// API route to search for lost items by name
+app.get('/api/lost-items/search', async (req, res) => {
+  const { itemName } = req.query;
+  try {
+    const searchQuery = itemName ? { itemName: { $regex: itemName, $options: 'i' } } : {};
+    const lostItems = await LostItem.find(searchQuery);
+    res.status(200).json(lostItems);
+  } catch (error) {
+    console.error('Error searching for lost items:', error);
+    res.status(500).json({ message: "Error searching for lost items", error: error.message });
   }
 });
 
